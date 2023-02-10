@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson9</title>
+</head>
+<!-- By Mohamed Dabour -->
+
+<body>
+    <div style="
+     margin-top: 100px;
+     margin-left: 480px;
+     background-color: black;
+     padding-top: 30px;
+     padding-bottom: 50px;
+     padding-left: 30px;
+     padding-right: 30px;
+     color: #FFF;
+     border-radius: 10px;
+     height: 350px;
+     width: 350px;
+     text-align: center;">
+        <h1>BMI resutls</h1>
+        <div>
+            <h3>your weight (Kg): </h3>
+            <input type="text" id="weight-input"><b> Kg</b>
+        </div>
+        <div>
+            <h3>your height (170cm = 1.70m) : </h3>
+            <input type="text" id="height-input"><b> m</b>
+        </div>
+        <br>
+        <button id="submit-btn" style="background-color: #4CAF50;
+         border-radius: 5px; 
+         padding: 8px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+         color: wheat;"> <b>result</b> </button> <br>
+        <h4 id="bmi-result"></h4>
+        <h3 id="bmi-category"></h3>
+    </div>
+
+    <script>
+        document.getElementById("submit-btn").addEventListener("click", () => {
+            var yourweight = document.getElementById("weight-input").value;
+            var yourheight = document.getElementById("height-input").value;
+            var BMI = yourweight / (yourheight * yourheight);
+            var ShowBMIresult = `Your BMI result is : ${BMI} `;
+            document.getElementById("bmi-result").innerHTML = ShowBMIresult;
+            switch (true) {
+                case (BMI >= 35):
+                    bmiCategory = "Over Weight from second level !!!";
+                    break;
+                case (BMI >= 30):
+                    bmiCategory = "Over Weight from frist level !!";
+                    break;
+                case (BMI >= 25):
+                    bmiCategory = "Over Weight !";
+                    break;
+                case (BMI == 25 && BMI >= 20):
+                    bmiCategory = "Normal Weight ";
+                    break;
+                case (BMI <= 18.5):
+                    bmiCategory = "Under Weight !!";
+                    break;
+                default:
+                    break;
+            }
+            document.getElementById("bmi-category").innerHTML = bmiCategory;
+        });
+    </script>
+</body>
+
+</html>
